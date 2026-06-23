@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
-        /* ----- RESET & VARIABLES (Unchanged) ----- */
+        /* ----- RESET & VARIABLES ----- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg-primary: #0a0e17; --bg-card: #121a26; --bg-panel: #1a2637; --bg-input: #0f1823;
@@ -35,7 +35,7 @@
 
         .container { max-width: 1200px; width: 100%; }
 
-        /* ----- HERO (Keyword Optimized) ----- */
+        /* ----- HERO ----- */
         .hero {
             text-align: center; padding: 2rem 1rem 2.5rem;
             border-bottom: 2px solid var(--border-glow); margin-bottom: 2.5rem; position: relative;
@@ -61,7 +61,7 @@
         }
         .hero p strong { color: var(--orange-bright); }
 
-        /* ----- SIGNAL PANEL (Unchanged) ----- */
+        /* ----- SIGNAL PANEL ----- */
         .signal-panel {
             background: var(--bg-card); border-radius: 16px; padding: 1.5rem 2rem;
             margin: 0 0 2.5rem 0; border: 1px solid var(--border-glow);
@@ -101,7 +101,7 @@
         }
         .tone-badge span { font-weight: 300; color: var(--text-muted); font-size: 0.8rem; margin-right: 8px; }
 
-        /* ----- BUTTONS & CARDS (Unchanged) ----- */
+        /* ----- BUTTONS & CARDS ----- */
         .btn {
             font-family: var(--font-body); font-weight: 700; font-size: 0.85rem;
             padding: 0.5rem 1.4rem; border-radius: 40px; border: none; cursor: pointer;
@@ -151,32 +151,155 @@
         .ref-card .value.orange { color:var(--orange-bright); }
         .ref-card .value.white { color:var(--text-primary); }
 
+        /* ==============================================================
+                   PRINT STYLES — OPTIMIZED TO FIT ON ONE PAGE
+                   ============================================================== */
         @media print {
-            body { background: #fff; color: #000; padding: 0.5in; }
-            .no-print { display: none !important; }
-            .card { border: 1px solid #ccc; background: #fff; box-shadow: none !important; transform: none !important; }
-            .card h2 { color: #000; }
-            .prog-table th { color: #000; border-bottom: 2px solid #000; }
-            .prog-table td { color: #333; border-bottom: 1px solid #ddd; }
-            .prog-table td:first-child { color: #000; }
-            .highlight-box { background: #f4f4f4; border-left: 4px solid #000; }
-            .hero { border-bottom: 2px solid #000; }
-            .hero p { color: #333; }
-            .frequency-badge { background: none; -webkit-text-fill-color: #000; color: #000; text-shadow: none; }
-            .frequency-badge small { -webkit-text-fill-color: #555; color: #555; }
-            .ref-card { background: #f9f9f9 !important; border: 1px solid #000 !important; box-shadow: none !important; }
-            .ref-card .value { color: #000 !important; }
-            .ref-card .label { color: #555 !important; }
-            .container { max-width: 100%; }
-            .grid-2 { display: block; }
-            .grid-2 .card { margin-bottom: 1.5rem; }
-            .tone-badge { border: 1px solid #333; color: #000; background: #eee; }
-            .tone-badge span { color: #555; }
-            .footer { border-top: 1px solid #ddd; }
-            .footer .disclaimer { border: 1px solid #ddd; background: #f9f9f9; }
-            .status-dot { background: #000 !important; box-shadow: none !important; }
-            .bar { background: #aaa; }
-            .bar.active { background: #000; box-shadow: none; }
+            /* --- Reset body for print --- */
+            body {
+                background: #fff !important;
+                color: #000 !important;
+                padding: 0.15in !important;  /* Tight margins */
+                margin: 0 !important;
+                font-size: 9pt !important;    /* Base print font size */
+                line-height: 1.3 !important;
+            }
+
+            /* --- Hide all non-essential elements --- */
+            .no-print {
+                display: none !important;
+            }
+
+            /* --- Show all cards and ref card --- */
+            .card, .ref-card {
+                background: #fff !important;
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+                transform: none !important;
+                border-radius: 4px !important;
+                margin: 0.15rem 0 !important;  /* Minimal spacing */
+                padding: 0.4rem 0.6rem !important;
+                page-break-inside: avoid !important;
+                page-break-after: avoid !important;
+            }
+
+            /* --- Quick Reference Card (4-up layout) --- */
+            .ref-card {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                justify-content: space-around !important;
+                padding: 0.3rem 0.5rem !important;
+                gap: 0.2rem !important;
+                margin-bottom: 0.2rem !important;
+            }
+            .ref-card .item { 
+                text-align: center !important; 
+                flex: 1 !important;
+            }
+            .ref-card .label {
+                font-size: 0.45rem !important;
+                letter-spacing: 1px !important;
+                color: #555 !important;
+            }
+            .ref-card .value {
+                font-size: 1rem !important;
+                margin-top: 1px !important;
+            }
+            .ref-card .value.orange { color: #000 !important; }
+            .ref-card .value.white { color: #000 !important; }
+
+            /* --- All Cards (Programming, Etiquette, Emergency) --- */
+            .card {
+                padding: 0.3rem 0.6rem !important;
+                margin: 0.15rem 0 !important;
+                border: 1px solid #ddd !important;
+            }
+            .card h2 {
+                font-size: 0.65rem !important;
+                color: #000 !important;
+                letter-spacing: 1px !important;
+                margin-bottom: 0.1rem !important;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 0.1rem;
+            }
+            .card p, .card li, .card ol {
+                font-size: 0.6rem !important;
+                color: #222 !important;
+                line-height: 1.25 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .card ul li {
+                padding: 0.05rem 0 0.05rem 0.8rem !important;
+                border-bottom: none !important;
+            }
+            .card ul li::before {
+                color: #000 !important;
+                font-size: 0.5rem !important;
+            }
+            .card ol {
+                padding-left: 1rem !important;
+                margin: 0 !important;
+            }
+            .card ol li {
+                margin-bottom: 0.05rem !important;
+                padding: 0 !important;
+            }
+
+            /* --- Programming Table --- */
+            .prog-table {
+                font-size: 0.5rem !important;
+                margin-top: 0.1rem !important;
+            }
+            .prog-table th {
+                color: #000 !important;
+                border-bottom: 1px solid #000 !important;
+                padding: 0.1rem 0.1rem !important;
+                font-size: 0.5rem !important;
+            }
+            .prog-table td {
+                padding: 0.1rem 0.1rem !important;
+                border-bottom: 1px solid #ddd !important;
+                color: #222 !important;
+                font-size: 0.5rem !important;
+            }
+            .prog-table td:first-child {
+                color: #000 !important;
+                font-weight: 600 !important;
+            }
+
+            /* --- Highlight Box (Pro Tip) --- */
+            .highlight-box {
+                background: #f4f4f4 !important;
+                border-left: 2px solid #000 !important;
+                padding: 0.15rem 0.5rem !important;
+                margin-top: 0.15rem !important;
+                border-radius: 0 4px 4px 0 !important;
+                font-size: 0.55rem !important;
+            }
+            .highlight-box strong { color: #000 !important; }
+
+            /* --- Grid layout for etiquette/emergency --- */
+            .grid-2 {
+                display: block !important;
+                margin: 0 !important;
+                gap: 0 !important;
+            }
+            .grid-2 .card {
+                margin: 0.15rem 0 !important;
+            }
+
+            /* --- Ensure it all fits on one page --- */
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            /* Footer and other extras hidden */
+            .footer, footer, .footer * {
+                display: none !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -201,7 +324,7 @@
 <body>
 <div class="container">
 
-    <!-- HERO SECTION (Keyword Optimized) -->
+    <!-- HERO SECTION (Hidden in Print) -->
     <header class="hero no-print">
         <div class="frequency-badge">462.675 <small>MHz</small></div>
         <h1>GMRS Channel 20 · The 462.675 MHz National Travel Channel</h1>
@@ -213,7 +336,7 @@
         </p>
     </header>
 
-    <!-- SIGNAL PANEL -->
+    <!-- SIGNAL PANEL (Hidden in Print) -->
     <div class="signal-panel no-print" id="signalPanel">
         <div class="signal-left">
             <div class="status-dot" id="statusDot"></div>
@@ -231,7 +354,7 @@
         <div class="tone-badge"><span>TON</span> 141.3</div>
     </div>
 
-    <!-- HISTORY & MODERN USAGE -->
+    <!-- HISTORY & MODERN USAGE (Hidden in Print) -->
     <div class="grid-2 no-print">
         <div class="card">
             <h2><span class="emoji">📜</span> The Legacy</h2>
@@ -265,7 +388,11 @@
         </div>
     </div>
 
-    <!-- QUICK REFERENCE -->
+    <!-- ==============================================================
+         PRINTABLE CHEAT SHEET (Visible in Print)
+         ============================================================== -->
+
+    <!-- QUICK REFERENCE (Visible in Print) -->
     <div class="ref-card">
         <div class="item"><div class="label">Frequency</div><div class="value orange">462.675 MHz</div></div>
         <div class="item"><div class="label">GMRS Channel</div><div class="value white">20</div></div>
@@ -273,57 +400,53 @@
         <div class="item"><div class="label">Max Power</div><div class="value white">50 W</div></div>
     </div>
 
-    <!-- PROGRAMMING GUIDE -->
-    <div class="card" style="margin-bottom:2rem;" id="programmingGuide">
-        <h2><span class="emoji">📻</span> Radio Programming Guide</h2>
-        <p style="margin-bottom:0.5rem;">
-            Set your radio to monitor <strong>GMRS channel 20</strong> (the <strong>462.675 MHz frequency</strong>)
-            with the <strong>CTCSS 141.3 Hz</strong> transmit tone. For repeaters, set the offset to
-            <strong style="color:var(--text-primary);">+5.0 MHz</strong> (transmit on 467.675).
+    <!-- PROGRAMMING GUIDE (Visible in Print) -->
+    <div class="card" id="programmingGuide">
+        <h2><span class="emoji">📻</span> Programming Guide</h2>
+        <p style="margin-bottom:0.2rem;">
+            <strong>GMRS channel 20</strong> — <strong>462.675 MHz</strong> with <strong>CTCSS 141.3 Hz</strong>.
+            For repeaters: set offset to <strong>+5.0 MHz</strong> (transmit on 467.675).
         </p>
         <table class="prog-table">
-            <thead><tr><th>Radio Model</th><th>Channel / Memory</th><th>TX/RX Frequency</th><th>CTCSS Tone (Tx)</th><th>Notes</th></tr></thead>
+            <thead><tr><th>Radio Model</th><th>Channel</th><th>CTCSS (Tx)</th><th>Notes</th></tr></thead>
             <tbody>
-                <tr><td>Midland MicroMobile (MXT series)</td><td>Channel 20</td><td>462.675 MHz</td><td>Privacy Code 22</td><td>141.3 Hz = Code 22</td></tr>
-                <tr><td>Baofeng GM-15 Pro</td><td>Channel 28 (Repeater) / Mem. 20</td><td>462.675 / 467.675</td><td>141.3 Hz</td><td>Set offset to +5.0 MHz</td></tr>
-                <tr><td>Wouxun KG-935G</td><td>Channel 20</td><td>462.675 MHz</td><td>141.3 Hz</td><td>Enable CTCSS Tx only</td></tr>
-                <tr><td>Kenwood TK-3170</td><td>User-defined</td><td>462.675 / 467.675</td><td>141.3 Hz</td><td>Program with software</td></tr>
-                <tr><td>Retevis GMRS</td><td>Channel 20</td><td>462.675 MHz</td><td>141.3 Hz</td><td>Use “T-CTCS” menu</td></tr>
+                <tr><td>Midland MicroMobile</td><td>Ch. 20</td><td>Code 22</td><td>141.3 = Code 22</td></tr>
+                <tr><td>Baofeng GM-15 Pro</td><td>Ch. 28 / Mem 20</td><td>141.3 Hz</td><td>+5.0 MHz offset</td></tr>
+                <tr><td>Wouxun KG-935G</td><td>Ch. 20</td><td>141.3 Hz</td><td>CTCSS Tx only</td></tr>
+                <tr><td>Retevis / Any GMRS</td><td>Ch. 20</td><td>141.3 Hz</td><td>Use T-CTCS menu</td></tr>
             </tbody>
         </table>
-        <div class="highlight-box" style="margin-top:1.2rem; border-left-color: #ffaa33;">
-            <strong>📌 Pro Tip for Beginners:</strong> Monitor with <strong>no tone (CSQ)</strong> to hear any call,
-            but <strong>transmit with 141.3 Hz</strong> (the <strong>CTCSS 141.3 Hz</strong> tone) so other
-            travelers hear you clearly over noise.
+        <div class="highlight-box">
+            <strong>📌 Pro Tip:</strong> Monitor with <strong>no tone (CSQ)</strong> to hear all calls.
+            Transmit with <strong>141.3 Hz</strong> so other travelers hear you.
         </div>
     </div>
 
-    <!-- ETIQUETTE & EMERGENCY -->
-    <div class="grid-2" style="margin: 0 0 2rem 0;" id="emergencyEtiquette">
+    <!-- ETIQUETTE & EMERGENCY (Visible in Print) -->
+    <div class="grid-2" id="emergencyEtiquette">
         <div class="card">
-            <h2><span class="emoji">🤝</span> Community Etiquette</h2>
+            <h2><span class="emoji">🤝</span> Etiquette</h2>
             <ul>
-                <li><strong style="color:var(--text-primary);">Monitor with CSQ:</strong> Set your receive to carrier squelch (no tone) so you never miss a call on the <strong>GMRS travel channel</strong>.</li>
-                <li><strong style="color:var(--text-primary);">Transmit with 141.3 Hz:</strong> Use the Travel Tone when speaking to avoid triggering repeaters unnecessarily.</li>
-                <li><strong style="color:var(--text-primary);">Ask first:</strong> Before a long call, say “Is the frequency in use?” to avoid stepping on a conversation.</li>
-                <li><strong style="color:var(--text-primary);">Keep it brief:</strong> The <strong>462.675 MHz frequency</strong> is for traveler assistance, not rag-chewing.</li>
-                <li><strong style="color:var(--text-primary);">Identify yourself:</strong> Use your GMRS call sign when required by FCC rules.</li>
+                <li><strong>Monitor with CSQ:</strong> Hear every call.</li>
+                <li><strong>Transmit with 141.3 Hz:</strong> Use the Travel Tone.</li>
+                <li><strong>Ask first:</strong> "Is the frequency in use?"</li>
+                <li><strong>Keep it brief:</strong> Traveler assistance only.</li>
+                <li><strong>Use your call sign:</strong> FCC requirement.</li>
             </ul>
         </div>
         <div class="card">
-            <h2><span class="emoji">🆘</span> How to Help in an Emergency</h2>
-            <p>If you hear a distress call on <strong>GMRS channel 20</strong>, follow these steps:</p>
-            <ol style="padding-left:1.2rem; color:var(--text-muted); margin-top:0.5rem;">
-                <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">1. Stop all traffic:</strong> Ask others to stand by.</li>
-                <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">2. Note location:</strong> Get the caller’s exact location, GPS coordinates, or landmarks.</li>
-                <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">3. Relay to 911:</strong> If you have cell coverage, call 911 and relay the information.</li>
-                <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">4. Stay on channel:</strong> Keep the caller calm and informed until help arrives.</li>
-                <li><strong style="color:var(--text-primary);">5. Use satellite if needed:</strong> If you have a PLB or satellite messenger, activate it.</li>
+            <h2><span class="emoji">🆘</span> Emergency Protocol</h2>
+            <ol>
+                <li><strong>Stop all traffic:</strong> Ask others to stand by.</li>
+                <li><strong>Note location:</strong> Get GPS or landmarks.</li>
+                <li><strong>Relay to 911:</strong> If you have cell coverage.</li>
+                <li><strong>Stay on channel:</strong> Keep caller calm.</li>
+                <li><strong>Use satellite:</strong> Activate PLB/messenger.</li>
             </ol>
         </div>
     </div>
 
-    <!-- AUDIO DEMO & SAFETY -->
+    <!-- AUDIO DEMO & SAFETY (Hidden in Print) -->
     <div class="card no-print" style="margin-bottom:2rem;" id="audioDemo">
         <h2><span class="emoji">🔊</span> Can You Hear Me? (141.3 Hz Tone Demo)</h2>
         <p>Click below to play a <strong>CTCSS 141.3 Hz</strong> tone. This is the standard Travel Tone used on <strong>GMRS channel 20</strong>.</p>
@@ -339,7 +462,7 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (Hidden in Print) -->
     <footer class="footer no-print" style="margin-top:1rem; padding-top:2rem; border-top:1px solid #1a2637; text-align:center; color:var(--text-muted); font-size:0.85rem;">
         <p>
             <span style="opacity:0.5;">⏺</span> <strong>GMRS travel channel</strong> — 462.675 MHz.
