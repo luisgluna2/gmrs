@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>462.675 MHz (GMRS Channel 20) - Beginner's Travel Guide & Tone 141.3</title>
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description" content="Your beginner-friendly guide to the GMRS National Travel Channel (462.675 MHz). Learn the CTCSS 141.3 Hz tone, radio programming, and emergency protocols for travelers.">
+    <meta name="keywords" content="GMRS travel channel, 462.675 MHz frequency, CTCSS 141.3 Hz, GMRS channel 20, GMRS for travelers">
+    <!-- Open Graph -->
+    <meta property="og:title" content="462.675 MHz (GMRS Channel 20) - Beginner's Travel Guide">
+    <meta property="og:description" content="Master the GMRS travel channel: programming, emergency etiquette, and the 141.3 Hz tone for road trips.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        /* ----- RESET & VARIABLES (Unchanged) ----- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0e17; --bg-card: #121a26; --bg-panel: #1a2637; --bg-input: #0f1823;
+            --text-primary: #e8edf5; --text-muted: #8899b4; --orange-glow: #ff6b00;
+            --orange-dim: #b84a00; --orange-bright: #ff8c3a; --border-glow: rgba(255, 107, 0, 0.3);
+            --font-display: 'Orbitron', monospace; --font-body: 'Inter', sans-serif;
+        }
+        body {
+            background-color: var(--bg-primary); color: var(--text-primary);
+            font-family: var(--font-body); line-height: 1.7; padding: 1.5rem;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--orange-dim); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--orange-glow); }
+
+        .container { max-width: 1200px; width: 100%; }
+
+        /* ----- HERO (Keyword Optimized) ----- */
+        .hero {
+            text-align: center; padding: 2rem 1rem 2.5rem;
+            border-bottom: 2px solid var(--border-glow); margin-bottom: 2.5rem; position: relative;
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: -2px; left: 20%; width: 60%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--orange-glow), transparent); filter: blur(4px);
+        }
+        .frequency-badge {
+            display: inline-block; font-family: var(--font-display); font-size: 4rem; font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, var(--orange-bright), var(--orange-glow));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 107, 0, 0.3); line-height: 1;
+        }
+        .frequency-badge small { font-size: 1.5rem; -webkit-text-fill-color: var(--text-muted); background: none; color: var(--text-muted); }
+        .hero h1 {
+            font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; letter-spacing: 2px;
+            margin-top: 0.5rem; color: var(--text-primary);
+        }
+        .hero p {
+            color: var(--text-muted); font-size: 1.15rem; max-width: 800px; margin: 0.75rem auto 0;
+        }
+        .hero p strong { color: var(--orange-bright); }
+
+        /* ----- SIGNAL PANEL (Unchanged) ----- */
+        .signal-panel {
+            background: var(--bg-card); border-radius: 16px; padding: 1.5rem 2rem;
+            margin: 0 0 2.5rem 0; border: 1px solid var(--border-glow);
+            box-shadow: 0 0 40px rgba(255, 107, 0, 0.05);
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;
+        }
+        .signal-left { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+        .status-dot {
+            width: 18px; height: 18px; border-radius: 50%;
+            background: #00ff88; box-shadow: 0 0 15px #00ff8866;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+        .signal-label { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+        .signal-label strong { color: var(--text-primary); font-family: var(--font-display); font-weight: 400; }
+
+        .meter-bars { display: flex; align-items: flex-end; gap: 6px; height: 40px; }
+        .bar {
+            width: 10px; background: var(--text-muted); border-radius: 4px;
+            transition: height 0.2s ease, background 0.2s ease; height: 8px;
+        }
+        .bar.active { background: var(--orange-glow); box-shadow: 0 0 12px var(--orange-glow); }
+        .bar:nth-child(1) { height: 10px; }
+        .bar:nth-child(2) { height: 18px; }
+        .bar:nth-child(3) { height: 26px; }
+        .bar:nth-child(4) { height: 34px; }
+        .bar:nth-child(5) { height: 40px; }
+        .bar.active:nth-child(1) { height: 16px; }
+        .bar.active:nth-child(2) { height: 26px; }
+        .bar.active:nth-child(3) { height: 34px; }
+        .bar.active:nth-child(4) { height: 42px; }
+        .bar.active:nth-child(5) { height: 48px; }
+
+        .tone-badge {
+            background: var(--bg-panel); padding: 0.4rem 1.8rem; border-radius: 40px;
+            border: 1px solid var(--orange-dim); font-family: var(--font-display);
+            font-weight: 700; font-size: 1.4rem; color: var(--orange-bright); white-space: nowrap;
+        }
+        .tone-badge span { font-weight: 300; color: var(--text-muted); font-size: 0.8rem; margin-right: 8px; }
+
+        /* ----- BUTTONS & CARDS (Unchanged) ----- */
+        .btn {
+            font-family: var(--font-body); font-weight: 700; font-size: 0.85rem;
+            padding: 0.5rem 1.4rem; border-radius: 40px; border: none; cursor: pointer;
+            transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .btn-primary { background: var(--orange-glow); color: #fff; box-shadow: 0 0 20px rgba(255,107,0,0.3); }
+        .btn-primary:hover { background: var(--orange-bright); transform: scale(1.03); }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0; }
+        .card {
+            background: var(--bg-card); border-radius: 16px; padding: 2rem 1.8rem;
+            border: 1px solid #1e2a3a; transition: border-color 0.3s, transform 0.2s;
+        }
+        .card:hover { border-color: var(--border-glow); transform: translateY(-3px); }
+        .card h2 {
+            font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+            text-transform: uppercase; letter-spacing: 2px; color: var(--orange-glow);
+            margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        }
+        .card p, .card li { color: var(--text-muted); font-size: 0.95rem; }
+        .card ul { list-style: none; padding: 0; }
+        .card ul li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .card ul li::before { content: '▹'; position: absolute; left: 0; color: var(--orange-glow); font-weight: bold; }
+        .highlight-box {
+            background: var(--bg-panel); border-left: 4px solid var(--orange-glow);
+            padding: 1rem 1.5rem; border-radius: 0 12px 12px 0; margin-top: 1rem;
+        }
+        .highlight-box strong { color: var(--text-primary); }
+
+        .prog-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.9rem; }
+        .prog-table th { text-align: left; color: var(--orange-bright); border-bottom: 2px solid var(--border-glow); padding: 0.5rem 0; }
+        .prog-table td { padding: 0.6rem 0; border-bottom: 1px solid #1a2637; color: var(--text-muted); }
+        .prog-table td:first-child { color: var(--text-primary); font-weight: 600; }
+
+        .audio-player { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+        .audio-player .btn { padding: 0.6rem 2rem; }
+
+        .ref-card {
+            background: linear-gradient(145deg,#141f2e,#0b111c); border:1px solid var(--orange-glow);
+            border-radius:16px; padding:2rem 2.5rem; margin:1rem 0 2.5rem;
+            display:flex; flex-wrap:wrap; justify-content:space-around; align-items:center; gap:1.5rem;
+            box-shadow:0 0 50px rgba(255,107,0,0.08);
+        }
+        .ref-card .item { text-align:center; }
+        .ref-card .label { font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); }
+        .ref-card .value { font-family:var(--font-display); font-size:1.8rem; font-weight:700; margin-top:4px; }
+        .ref-card .value.orange { color:var(--orange-bright); }
+        .ref-card .value.white { color:var(--text-primary); }
+
+        @media print {
+            body { background: #fff; color: #000; padding: 0.5in; }
+            .no-print { display: none !important; }
+            .card { border: 1px solid #ccc; background: #fff; box-shadow: none !important; transform: none !important; }
+            .card h2 { color: #000; }
+            .prog-table th { color: #000; border-bottom: 2px solid #000; }
+            .prog-table td { color: #333; border-bottom: 1px solid #ddd; }
+            .prog-table td:first-child { color: #000; }
+            .highlight-box { background: #f4f4f4; border-left: 4px solid #000; }
+            .hero { border-bottom: 2px solid #000; }
+            .hero p { color: #333; }
+            .frequency-badge { background: none; -webkit-text-fill-color: #000; color: #000; text-shadow: none; }
+            .frequency-badge small { -webkit-text-fill-color: #555; color: #555; }
+            .ref-card { background: #f9f9f9 !important; border: 1px solid #000 !important; box-shadow: none !important; }
+            .ref-card .value { color: #000 !important; }
+            .ref-card .label { color: #555 !important; }
+            .container { max-width: 100%; }
+            .grid-2 { display: block; }
+            .grid-2 .card { margin-bottom: 1.5rem; }
+            .tone-badge { border: 1px solid #333; color: #000; background: #eee; }
+            .tone-badge span { color: #555; }
+            .footer { border-top: 1px solid #ddd; }
+            .footer .disclaimer { border: 1px solid #ddd; background: #f9f9f9; }
+            .status-dot { background: #000 !important; box-shadow: none !important; }
+            .bar { background: #aaa; }
+            .bar.active { background: #000; box-shadow: none; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 1rem 0.5rem 1.5rem; }
+            .frequency-badge { font-size: 2.8rem; }
+            .frequency-badge small { font-size: 1rem; }
+            .hero h1 { font-size: 1.2rem; }
+            .grid-2 { grid-template-columns: 1fr; gap: 1.2rem; }
+            .signal-panel { flex-direction: column; align-items: stretch; text-align: center; }
+            .signal-left { justify-content: center; }
+            .tone-badge { align-self: center; }
+            .prog-table { font-size: 0.8rem; }
+            .prog-table td, .prog-table th { padding: 0.4rem 0.2rem; }
+            .ref-card { flex-direction: column; padding: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .frequency-badge { font-size: 2rem; }
+            .card { padding: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HERO SECTION (Keyword Optimized) -->
+    <header class="hero no-print">
+        <div class="frequency-badge">462.675 <small>MHz</small></div>
+        <h1>GMRS Channel 20 · The 462.675 MHz National Travel Channel</h1>
+        <p>
+            Welcome to your ultimate beginner-friendly guide for the <strong>GMRS travel channel</strong>.
+            Whether you're programming <strong>GMRS channel 20</strong> for a road trip or learning about the
+            <strong>CTCSS 141.3 Hz</strong> tone, this page covers everything you need to get started with
+            <strong>GMRS for travelers</strong>.
+        </p>
+    </header>
+
+    <!-- SIGNAL PANEL -->
+    <div class="signal-panel no-print" id="signalPanel">
+        <div class="signal-left">
+            <div class="status-dot" id="statusDot"></div>
+            <div>
+                <div class="signal-label">📡 <strong id="statusLabel">MONITORING</strong> · TRAVEL TONE</div>
+                <div style="display:flex; gap:0.5rem; margin-top:4px; flex-wrap:wrap;">
+                    <span style="background:#1a2637; padding:2px 14px; border-radius:20px; font-size:0.75rem; color:var(--text-muted);">CTCSS 141.3 Hz</span>
+                    <span style="background:#1a2637; padding:2px 14px; border-radius:20px; font-size:0.75rem; color:var(--text-muted);">Simplex / Repeater Output</span>
+                </div>
+            </div>
+        </div>
+        <div class="meter-bars" id="meterBars">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+        <div class="tone-badge"><span>TON</span> 141.3</div>
+    </div>
+
+    <!-- HISTORY & MODERN USAGE -->
+    <div class="grid-2 no-print">
+        <div class="card">
+            <h2><span class="emoji">📜</span> The Legacy</h2>
+            <p>
+                In the 1970s, the <strong style="color:var(--text-primary);">FCC</strong> formally recognized
+                the <strong style="color:var(--text-primary);">462.675 MHz frequency</strong> as the national
+                emergency and traveler assistance channel. Driven by REACT and the NSEA, hundreds of repeaters
+                were deployed across the US. It was commonly known as the <strong style="color:var(--orange-bright);">"Orange Dot"</strong>
+                channel on early CB-style radios.
+            </p>
+            <div class="highlight-box">
+                <strong>⚡ Official status ended in 1999</strong> — but the community kept it alive as the primary
+                <strong>GMRS travel channel</strong>.
+            </div>
+        </div>
+        <div class="card">
+            <h2><span class="emoji">🛣️</span> Today’s Role for Travelers</h2>
+            <p>
+                Though no longer an FCC-mandated emergency channel, <strong style="color:var(--text-primary);">462.675</strong>
+                remains the most widely monitored <strong>GMRS channel 20</strong> for travelers. The accepted
+                <strong style="color:var(--orange-bright);">"Travel Tone"</strong> is
+                <strong style="color:var(--text-primary);">CTCSS 141.3 Hz</strong>, which allows
+                <strong>GMRS for travelers</strong> to filter out random interference.
+            </p>
+            <p style="margin-top:0.8rem;">
+                <strong style="color:var(--text-primary);">🔁 Simplex vs. Repeater:</strong> On <strong>simplex</strong>,
+                you talk and listen on the <strong>462.675 MHz frequency</strong>. For <strong>repeaters</strong>,
+                this is the <em>output</em> (listen) frequency — you transmit on
+                <strong style="color:var(--orange-bright);">467.675 MHz</strong> (+5.0 MHz offset).
+            </p>
+        </div>
+    </div>
+
+    <!-- QUICK REFERENCE -->
+    <div class="ref-card">
+        <div class="item"><div class="label">Frequency</div><div class="value orange">462.675 MHz</div></div>
+        <div class="item"><div class="label">GMRS Channel</div><div class="value white">20</div></div>
+        <div class="item"><div class="label">Travel Tone (CTCSS)</div><div class="value orange">141.3 Hz</div></div>
+        <div class="item"><div class="label">Max Power</div><div class="value white">50 W</div></div>
+    </div>
+
+    <!-- PROGRAMMING GUIDE -->
+    <div class="card" style="margin-bottom:2rem;" id="programmingGuide">
+        <h2><span class="emoji">📻</span> Radio Programming Guide</h2>
+        <p style="margin-bottom:0.5rem;">
+            Set your radio to monitor <strong>GMRS channel 20</strong> (the <strong>462.675 MHz frequency</strong>)
+            with the <strong>CTCSS 141.3 Hz</strong> transmit tone. For repeaters, set the offset to
+            <strong style="color:var(--text-primary);">+5.0 MHz</strong> (transmit on 467.675).
+        </p>
+        <table class="prog-table">
+            <thead><tr><th>Radio Model</th><th>Channel / Memory</th><th>TX/RX Frequency</th><th>CTCSS Tone (Tx)</th><th>Notes</th></tr></thead>
+            <tbody>
+                <tr><td>Midland MicroMobile (MXT series)</td><td>Channel 20</td><td>462.675 MHz</td><td>Privacy Code 22</td><td>141.3 Hz = Code 22</td></tr>
+                <tr><td>Baofeng GM-15 Pro</td><td>Channel 28 (Repeater) / Mem. 20</td><td>462.675 / 467.675</td><td>141.3 Hz</td><td>Set offset to +5.0 MHz</td></tr>
+                <tr><td>Wouxun KG-935G</td><td>Channel 20</td><td>462.675 MHz</td><td>141.3 Hz</td><td>Enable CTCSS Tx only</td></tr>
+                <tr><td>Kenwood TK-3170</td><td>User-defined</td><td>462.675 / 467.675</td><td>141.3 Hz</td><td>Program with software</td></tr>
+                <tr><td>Retevis GMRS</td><td>Channel 20</td><td>462.675 MHz</td><td>141.3 Hz</td><td>Use “T-CTCS” menu</td></tr>
+            </tbody>
+        </table>
+        <div class="highlight-box" style="margin-top:1.2rem; border-left-color: #ffaa33;">
+            <strong>📌 Pro Tip for Beginners:</strong> Monitor with <strong>no tone (CSQ)</strong> to hear any call,
+            but <strong>transmit with 141.3 Hz</strong> (the <strong>CTCSS 141.3 Hz</strong> tone) so other
+            travelers hear you clearly over noise.
+        </div>
+    </div>
+
+    <!-- ETIQUETTE & EMERGENCY -->
+    <div class="grid-2" style="margin: 0 0 2rem 0;" id="emergencyEtiquette">
+        <div class="card">
+            <h2><span class="emoji">🤝</span> Community Etiquette</h2>
+            <ul>
+                <li><strong style="color:var(--text-primary);">Monitor with CSQ:</strong> Set your receive to carrier squelch (no tone) so you never miss a call on the <strong>GMRS travel channel</strong>.</li>
+                <li><strong style="color:var(--text-primary);">Transmit with 141.3 Hz:</strong> Use the Travel Tone when speaking to avoid triggering repeaters unnecessarily.</li>
+                <li><strong style="color:var(--text-primary);">Ask first:</strong> Before a long call, say “Is the frequency in use?” to avoid stepping on a conversation.</li>
+                <li><strong style="color:var(--text-primary);">Keep it brief:</strong> The <strong>462.675 MHz frequency</strong> is for traveler assistance, not rag-chewing.</li>
+                <li><strong style="color:var(--text-primary);">Identify yourself:</strong> Use your GMRS call sign when required by FCC rules.</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h2><span class="emoji">🆘</span> How to Help in an Emergency</h2>
+            <p>If you hear a distress call on <strong>GMRS channel 20</strong>, follow these steps:</p>
+            <ol style="padding-left:1.2rem; color:var(--text-muted); margin-top:0.5rem;">
+                <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">1. Stop all traffic:</strong> Ask others to stand by.</li>
+                <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">2. Note location:</strong> Get the caller’s exact location, GPS coordinates, or landmarks.</li>
+                <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">3. Relay to 911:</strong> If you have cell coverage, call 911 and relay the information.</li>
+                <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">4. Stay on channel:</strong> Keep the caller calm and informed until help arrives.</li>
+                <li><strong style="color:var(--text-primary);">5. Use satellite if needed:</strong> If you have a PLB or satellite messenger, activate it.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- AUDIO DEMO & SAFETY -->
+    <div class="card no-print" style="margin-bottom:2rem;" id="audioDemo">
+        <h2><span class="emoji">🔊</span> Can You Hear Me? (141.3 Hz Tone Demo)</h2>
+        <p>Click below to play a <strong>CTCSS 141.3 Hz</strong> tone. This is the standard Travel Tone used on <strong>GMRS channel 20</strong>.</p>
+        <div class="audio-player">
+            <button class="btn btn-primary" id="playToneBtn">▶ Play 141.3 Hz Tone</button>
+            <span style="color:var(--text-muted); font-size:0.9rem;" id="audioStatus">Ready</span>
+        </div>
+        <div class="highlight-box" style="margin-top:1.5rem; border-left-color: #ff6666;">
+            <strong>⚠️ CRITICAL SAFETY REMINDER:</strong> The <strong>462.675 MHz frequency</strong> is a <strong>radio channel</strong>,
+            not a substitute for a <strong style="color:var(--text-primary);">Personal Locator Beacon (PLB)</strong> or
+            <strong style="color:var(--text-primary);">satellite messenger</strong>. For life-threatening emergencies,
+            always carry a dedicated satellite SOS device.
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer no-print" style="margin-top:1rem; padding-top:2rem; border-top:1px solid #1a2637; text-align:center; color:var(--text-muted); font-size:0.85rem;">
+        <p>
+            <span style="opacity:0.5;">⏺</span> <strong>GMRS travel channel</strong> — 462.675 MHz.
+            Community-powered. Always monitor, always help. <span style="opacity:0.5;">⏺</span>
+        </p>
+        <div style="margin:1rem 0; display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; font-size:0.9rem;">
+            <button class="btn btn-primary" id="printCheatSheetBtn">🖨️ Print Cheat Sheet</button>
+        </div>
+        <div style="background:rgba(255,0,0,0.05); border:1px solid #3a1a1a; border-radius:12px; padding:1.2rem; max-width:750px; margin:0 auto;">
+            <strong>Disclaimer:</strong> This guide is for informational purposes only. The FCC does not currently
+            designate the <strong>462.675 MHz frequency</strong> as an official emergency channel. Always check local
+            regulations and GMRS licensing requirements (FCC Part 95) before transmitting.
+        </div>
+        <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--bg-panel);">
+            Built for the GMRS community · 2026
+        </p>
+    </footer>
+
+</div>
+
+<script>
+    (function() {
+        // ----- SIGNAL METER -----
+        const bars = document.querySelectorAll('.bar');
+        const dot = document.getElementById('statusDot');
+
+        function animateMeter() {
+            const activeCount = Math.floor(Math.random() * 4) + 1;
+            bars.forEach(bar => bar.classList.remove('active'));
+            const indices = [];
+            while (indices.length < activeCount) {
+                const rand = Math.floor(Math.random() * 5);
+                if (!indices.includes(rand)) indices.push(rand);
+            }
+            indices.forEach(i => bars[i].classList.add('active'));
+            dot.style.background = '#00ff88';
+            dot.style.boxShadow = '0 0 15px #00ff8866';
+        }
+        function scheduleMeter() {
+            const delay = Math.floor(Math.random() * 3000) + 2000;
+            setTimeout(() => { animateMeter(); scheduleMeter(); }, delay);
+        }
+        setTimeout(() => { animateMeter(); scheduleMeter(); }, 500);
+
+        const panel = document.getElementById('signalPanel');
+        panel.addEventListener('mouseenter', () => {
+            bars.forEach((bar, idx) => {
+                setTimeout(() => { bar.classList.add('active'); }, idx * 70);
+            });
+        });
+        panel.addEventListener('mouseleave', () => {
+            setTimeout(() => { if (!panel.matches(':hover')) animateMeter(); }, 300);
+        });
+
+        // ----- AUDIO TONE -----
+        const playBtn = document.getElementById('playToneBtn');
+        const audioStatus = document.getElementById('audioStatus');
+        let audioCtx = null, osc = null, gain = null;
+        function playTone() {
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (osc) { try { osc.stop(); } catch(e) {} osc.disconnect(); osc = null; }
+                if (gain) { gain.disconnect(); gain = null; }
+                osc = audioCtx.createOscillator();
+                gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(141.3, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.3, audioCtx.currentTime + 0.05);
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime + 0.8);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.0);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(audioCtx.currentTime);
+                osc.stop(audioCtx.currentTime + 1.0);
+                audioStatus.textContent = '🔊 Playing 141.3 Hz...';
+                setTimeout(() => { audioStatus.textContent = 'Ready'; }, 1100);
+                setTimeout(() => { if (osc) { try { osc.disconnect(); } catch(e) {}; osc = null; } if (gain) { try { gain.disconnect(); } catch(e) {}; gain = null; } }, 1200);
+            } catch (err) { audioStatus.textContent = '⚠️ Audio error'; console.error(err); }
+        }
+        playBtn.addEventListener('click', playTone);
+
+        // ----- PRINT -----
+        document.getElementById('printCheatSheetBtn').addEventListener('click', () => {
+            window.print();
+        });
+
+    })();
+</script>
+</body>
+</html>
